@@ -18,5 +18,7 @@
   "tags": [
     "bookmarks"
   ],
-  "mediaLinks": [ ]
+  "mediaLinks": [
+    "https://raw.githubusercontent.com/shaarli/Shaarli/master/doc/images/doc-logo.png"
+  ]
 }
