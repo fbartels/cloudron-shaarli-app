@@ -1,2 +1,5 @@
+[0.8.3-1]
+* update app to also put the template and plugin dir into the data space
+
 [0.8.3]
 * Initial version of this app, along with Shaarli 0.8.3

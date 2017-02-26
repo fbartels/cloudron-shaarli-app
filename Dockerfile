@@ -25,17 +25,21 @@ WORKDIR /app/code
 
 RUN curl -L https://github.com/shaarli/Shaarli/releases/download/v0.8.3/shaarli-v0.8.3-full.tar.gz | tar -xz --strip-components 1 -f -
 
-RUN chown -R www-data:www-data /app/code
-
 RUN mkdir -p /app/data/data-dir /run/shaarli/cache /run/shaarli/pagecache /run/shaarli/sessions /run/shaarli/tmp
 
 # config
 RUN mv /app/code/data /app/code/data.orig && \
     ln -s /app/data/data-dir /app/code/data && \
+    mv /app/code/tpl /app/code/tpl.orig && \
+    ln -s /app/data/tpl /app/code/tpl && \
+    mv /app/code/plugins /app/code/plugins.orig && \
+    ln -s /app/data/plugins/ /app/code/plugins && \
     rm -rf /app/code/cache /app/code/pagecache /app/code/tmp && \
     ln -s /run/shaarli/cache /app/code/cache && \
     ln -s /run/shaarli/pagecache /app/code/pagecache && \
     ln -s /run/shaarli/tmp /app/code/tmp
+
+RUN chown -R www-data:www-data /app/code
 
 ADD start.sh /app/code/start.sh
 

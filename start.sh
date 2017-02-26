@@ -2,13 +2,16 @@
 
 set -eu
 
-mkdir -p /app/data/data-dir/
+mkdir -p /app/data/data-dir/ /app/data/tpl /app/data/plugins
 
-# Create 'regular' conf files so that they are immediately writable
+# distribute .htaccess to r/w dirs
 cp -u /app/code/data.orig/.htaccess /app/data/data-dir/
 cp -u /app/code/data.orig/.htaccess /run/shaarli/cache/
 cp -u /app/code/data.orig/.htaccess /run/shaarli/pagecache/
 cp -u /app/code/data.orig/.htaccess /run/shaarli/tmp/
+
+cp -u /app/code/tpl.orig/* /app/data/tpl
+cp -ru /app/code/plugins.orig/* /app/data/plugins
 
 chown -R www-data:www-data /app/data /run/shaarli
 
